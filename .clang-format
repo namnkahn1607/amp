@@ -16,6 +16,7 @@ BreakConstructorInitializers: BeforeComma
 DerivePointerAlignment: false
 IndentWidth: 4
 InsertNewlineAtEOF: true
+PackConstructorInitializers: Never
 PointerAlignment: Left
 SortIncludes: true
 TabWidth: 4
