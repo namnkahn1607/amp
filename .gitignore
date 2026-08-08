@@ -1,0 +1,4 @@
+.vscode/
+debug/*.out
+
+in.txt

@@ -1,0 +1,22 @@
+Language: Cpp
+BasedOnStyle: Google
+
+AccessModifierOffset: -4
+AlignAfterOpenBracket: BlockIndent
+AlignConsecutiveAssignments:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: false
+AlignConsecutiveDeclarations:
+  Enabled: true
+  AcrossEmptyLines: false
+  AcrossComments: false
+AlwaysBreakTemplateDeclarations: false
+BreakConstructorInitializers: BeforeComma
+DerivePointerAlignment: false
+IndentWidth: 4
+InsertNewlineAtEOF: true
+PointerAlignment: Left
+SortIncludes: true
+TabWidth: 4
+UseTab: Never
