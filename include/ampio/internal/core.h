@@ -100,7 +100,7 @@ inline std::vector<std::string> SplitTokens(const std::string& content) {
 // Assume that brackets exist; throw on malformed input.
 inline std::string StripBrackets(const std::string& line) {
     const size_t open  = line.find(kOpenBracket);
-    const size_t close = line.find(kCloseBracket);
+    const size_t close = line.rfind(kCloseBracket);
     if (open == std::string::npos || close == std::string::npos ||
         open >= close) {
         throw std::invalid_argument(
