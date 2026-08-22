@@ -27,13 +27,13 @@ constexpr const char kCloseBracket = ']';
 inline std::string ReadLine() {
     std::string line;
     while (std::getline(std::cin, line)) {
-        // Trimming leading whitespaces.
+        // Trim leading whitespaces.
         const size_t start = line.find_first_not_of(kWhiteSpaces);
-        const size_t end   = line.find_last_not_of(kWhiteSpaces);
         if (start == std::string::npos) {
             continue;
         }
 
+        const size_t end = line.find_last_not_of(kWhiteSpaces);
         return line.substr(start, end - start + 1);
     }
 
@@ -44,9 +44,10 @@ inline std::string ReadLine() {
 // NOTE: only strips ONE depth.
 inline std::vector<std::string> SplitTokens(const std::string& content) {
     std::vector<std::string> tokens;
-    int                      depth    = 0;
-    bool                     in_quote = false;
-    std::string              curr;
+
+    int         depth    = 0;
+    bool        in_quote = false;
+    std::string curr;
 
     for (char c : content) {
         if (c == kQuote) {
@@ -107,7 +108,7 @@ inline std::string StripBrackets(const std::string& line) {
         );
     }
 
-    return line.substr(open + 1, close - open + 1);
+    return line.substr(open + 1, close - open - 1);
 }
 
 // StripQuotes strips surrounding quotes of a string token: `"hello" -> hello`.
