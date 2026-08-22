@@ -19,6 +19,10 @@ template <typename T> inline void Print(const T& val) {
     std::cout << val << "\n";
 }
 
+template <> inline void Print(const bool& val) {
+    std::cout << (val ? "true" : "false") << "\n";
+}
+
 template <typename T> inline void Print(const std::vector<T>& array) {
     std::cout << "[";
     for (size_t i = 0; i < array.size(); ++i) {
