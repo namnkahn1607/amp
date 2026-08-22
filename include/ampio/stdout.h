@@ -10,8 +10,8 @@
 #include <string>
 #include <vector>
 
-#include "binary_tree.h"
-#include "singly_linked_list.h"
+#include "dsa/binary_tree.h"
+#include "dsa/singly_linked_list.h"
 
 namespace ampio {
 

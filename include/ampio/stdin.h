@@ -9,9 +9,9 @@
 #include <algorithm>
 #include <queue>
 
-#include "binary_tree.h"
+#include "dsa/binary_tree.h"
 #include "internal/core.h"
-#include "singly_linked_list.h"
+#include "dsa/singly_linked_list.h"
 
 namespace ampio {
 
