@@ -1,4 +1,6 @@
 // 133b. Clone Graph
+// NOTE: The BFS approach is mostly identical to this one: replace
+// std::stack<> with std::queue<>.
 
 #include <stack>
 #include <unordered_map>
