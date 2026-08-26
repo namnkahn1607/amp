@@ -14,41 +14,44 @@ struct Frame {
     Node* original_child;
 };
 
-Node* cloneGraph(Node* node) {
-    if (node == nullptr) {
-        return nullptr;
-    }
+class Solution {
+public:
+    Node* cloneGraph(Node* node) {
+        if (node == nullptr) {
+            return nullptr;
+        }
 
-    std::stack<Frame> callstack;
-    callstack.push({nullptr, node});
+        std::stack<Frame> callstack;
+        callstack.push({nullptr, node});
 
-    std::unordered_map<int, Node*> table;
+        std::unordered_map<int, Node*> table;
 
-    while (!callstack.empty()) {
-        auto [cloned_parent, original_child] = callstack.top();
-        callstack.pop();
+        while (!callstack.empty()) {
+            auto [cloned_parent, original_child] = callstack.top();
+            callstack.pop();
 
-        int val = original_child->val;
-        if (table.count(val)) {
-            if (cloned_parent != nullptr) {
-                cloned_parent->neighbors.push_back(table[val]);
+            int val = original_child->val;
+            if (table.count(val)) {
+                if (cloned_parent != nullptr) {
+                    cloned_parent->neighbors.push_back(table[val]);
+                }
+                continue;
             }
-            continue;
+
+            Node* cloned_child = new Node(val);
+            if (cloned_parent != nullptr) {
+                cloned_parent->neighbors.push_back(cloned_child);
+            }
+            table[val] = cloned_child;
+
+            for (auto* neighbor : original_child->neighbors) {
+                callstack.push({cloned_child, neighbor});
+            }
         }
 
-        Node* cloned_child = new Node(val);
-        if (cloned_parent != nullptr) {
-            cloned_parent->neighbors.push_back(cloned_child);
-        }
-        table[val] = cloned_child;
-
-        for (auto* neighbor : original_child->neighbors) {
-            callstack.push({cloned_child, neighbor});
-        }
+        return table[node->val];
     }
-
-    return table[node->val];
-}
+};
 
 int main() {
     // `0 <= The number of nodes in the graph <= 100`.
@@ -71,6 +74,6 @@ int main() {
     }
 
     Node* original = nodes[1];
-    ampio::Print(Node::Compare(original, cloneGraph(original)));
+    ampio::Print(Node::Compare(original, Solution{}.cloneGraph(original)));
     return 0;
 }
